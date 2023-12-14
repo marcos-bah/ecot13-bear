@@ -25,4 +25,9 @@ public class Tree {
         this.height = height;
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

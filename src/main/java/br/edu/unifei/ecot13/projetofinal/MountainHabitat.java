@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 public class MountainHabitat extends Habitat {
@@ -25,5 +24,11 @@ public class MountainHabitat extends Habitat {
         this.vegetation = vegetation;
         this.temperature = temperature;
         this.caves = caves;
+    }
+
+    @Override
+    public String toString() {
+        return "MountainHabitat [altitude=" + altitude + ", temperature=" + temperature
+                + ", vegetation=" + vegetation + "]";
     }
 }

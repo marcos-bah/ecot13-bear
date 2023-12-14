@@ -16,4 +16,9 @@ public class TundraHabitat extends Habitat {
         this.permafrost = permafrost;
         this.lowGrowingPlants = lowGrowingPlants;
     }
+
+    @Override
+    public String toString() {
+        return "TundraHabitat [lowGrowingPlants=" + lowGrowingPlants + ", permafrost=" + permafrost + "]";
+    }
 }

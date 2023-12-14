@@ -29,4 +29,45 @@ public class Ocean {
     public String getName() {
         return name;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getDepth() {
+        return depth;
+    }
+
+    public void setDepth(float depth) {
+        this.depth = depth;
+    }
+
+    public float getSalinity() {
+        return salinity;
+    }
+
+    public void setSalinity(float salinity) {
+        this.salinity = salinity;
+    }
+
+    public float getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
+    }
+
+    @Override
+    public String toString() {
+        return "Ocean [name=" + name + ", depth=" + depth + "]";
+    }
 }

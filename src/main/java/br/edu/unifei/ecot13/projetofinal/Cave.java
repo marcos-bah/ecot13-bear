@@ -26,4 +26,9 @@ public class Cave {
         this.capacity = capacity;
         this.isExplored = isExplored;
     }
+
+    @Override
+    public String toString() {
+        return "Cave [name=" + name + ", isExplored=" + isExplored + "]";
+    }
 }

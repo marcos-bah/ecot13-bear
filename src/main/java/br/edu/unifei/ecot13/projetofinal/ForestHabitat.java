@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 public class ForestHabitat extends Habitat {
@@ -22,5 +21,10 @@ public class ForestHabitat extends Habitat {
         this.treeDensity = treeDensity;
         this.undergrowth = undergrowth;
         this.trees = trees;
+    }
+
+    @Override
+    public String toString() {
+        return "ForestHabitat [treeDensity=" + treeDensity + ", undergrowth=" + undergrowth + "]";
     }
 }

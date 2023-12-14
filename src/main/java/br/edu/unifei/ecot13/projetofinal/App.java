@@ -81,7 +81,7 @@ public final class App {
 
         SalmonGUI salmonGUI = new SalmonGUI();
         salmonGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        salmonGUI.setSize(650, 400);
+        salmonGUI.setSize(720, 400);
         salmonGUI.setVisible(true);
     }
 }

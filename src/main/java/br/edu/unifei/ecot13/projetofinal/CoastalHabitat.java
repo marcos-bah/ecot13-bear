@@ -2,7 +2,6 @@ package br.edu.unifei.ecot13.projetofinal;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
 public class CoastalHabitat extends Habitat {
@@ -21,5 +20,11 @@ public class CoastalHabitat extends Habitat {
         this.rockyShoreline = rockyShoreline;
         this.marineFoodSources = marineFoodSources;
         this.ocean = ocean;
+    }
+
+    @Override
+    public String toString() {
+        return "CoastalHabitat [marineFoodSources=" + marineFoodSources + ", ocean=" + ocean + ", rockyShoreline="
+                + rockyShoreline + "]";
     }
 }
