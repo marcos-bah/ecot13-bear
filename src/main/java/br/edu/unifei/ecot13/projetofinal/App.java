@@ -1,137 +1,87 @@
 package br.edu.unifei.ecot13.projetofinal;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.swing.JFrame;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
 public final class App {
-    // public static void main(String[] args) {
-    //     Urso urso = new Urso();
-    //     urso.setNome("Bear");
-
-    //     EntityManagerFactory emf = Persistence.createEntityManagerFactory("ursoPU");
-    //     EntityManager em = emf.createEntityManager();
-
-    //     em.getTransaction().begin();
-    //     em.persist(urso);
-    //     em.getTransaction().commit();
-
-    //     em.close();
-    //     emf.close();
-    // }
-
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ursoPU");
+        // Ocean ocean = new Ocean("Atlantico", 1000, 1, 28);
+        // Tree tree = new Tree("Pereira", "de Lei", 100, 34);
+        // Cave cave = new Cave("Desconhecida", 20, 0, false);
 
-        JFrame frame = new JFrame("Urso App");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
+        // List<Tree> treeList = new ArrayList<>();
+        // treeList.add(tree);
 
-        Container pane = frame.getContentPane();
-        pane.setLayout(new GridLayout(5, 2));
+        // List<Cave> caveList = new ArrayList<>();
+        // Cave cave1 = new Cave("Caverna 1", 10, 5, true);
+        // Cave cave2 = new Cave("Caverna 2", 15, 8, false);
+        // Cave cave3 = new Cave("Caverna 3", 20, 12, true);
 
-        JLabel label = new JLabel("Enter bear name:");
-        pane.add(label);
+        // caveList.add(cave);
+        // caveList.add(cave1);
+        // caveList.add(cave2);
+        // caveList.add(cave3);
 
-        JTextField textField = new JTextField();
-        pane.add(textField);
+        // CoastalHabitat coastalHabitat = new CoastalHabitat("umido", "quente", false, "Salmao", ocean);
+        // ForestHabitat forestHabitat = new ForestHabitat("umido", "quente", 1, "mato", treeList);
+        // MountainHabitat mountainHabitat = new MountainHabitat("Seco", "frio", 4200, "rasteira", -15, caveList);
+        // TundraHabitat tundraHabitat = new TundraHabitat("seco", "quente", false, "erva daninha");
 
-        DefaultListModel<Urso> listModel = new DefaultListModel<>();
-        JList<Urso> list = new JList<>(listModel);
+        // City city = new City("São Lourenço", "37470-000 - Brazil");
+        // Park park = new Park("Parque das Aguas", "Sul de Minas", city);
 
-        list.setCellRenderer(new DefaultListCellRenderer() {
-            @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value,
-                                                          int index, boolean isSelected,
-                                                          boolean cellHasFocus) {
-                Urso urso = (Urso) value;
-                return super.getListCellRendererComponent(list, urso.getNome(), index, isSelected, cellHasFocus);
-            }
-        });
+        // Salmon salmon = new Salmon(0, "rateado", coastalHabitat, 10, false, ocean);
 
-        pane.add(list);
+        // Bear bear = new Bear(2, "pelagem", forestHabitat, "joaozinho", 10, "preto");
 
-        JButton createButton = new JButton("Create Bear");
-        pane.add(createButton);
+        // List<Bear> bearList = new ArrayList<>();
+        // bearList.add(bear);
 
-        JButton updateButton = new JButton("Update Bear");
-        pane.add(updateButton);
+        // Human human = new Human(2, "pele", tundraHabitat, "Rodrigo", 25, city, bearList);
 
-        JButton deleteButton = new JButton("Delete Bear");
-        pane.add(deleteButton);
+        // List<Animal> animalList = new ArrayList<>();
+        // animalList.add(bear);
+        // animalList.add(human);
+        // animalList.add(salmon);
 
-        refreshList(emf, listModel);
+        // God god = new God(animalList);
 
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EntityManager em = emf.createEntityManager();
-                em.getTransaction().begin();
+        // EntityManagerFactory emf = Persistence.createEntityManagerFactory("ursoPU");
+        // EntityManager em = emf.createEntityManager();
 
-                Urso urso = new Urso();
-                urso.setNome(textField.getText());
-                em.persist(urso);
+        // em.getTransaction().begin();
 
-                em.getTransaction().commit();
-                em.close();
+        // em.persist(ocean);
+        // em.persist(tree);
+        // em.persist(cave);
+        // em.persist(cave1);
+        // em.persist(cave2);
+        // em.persist(cave3);
+        // em.persist(coastalHabitat);
+        // em.persist(forestHabitat);
+        // em.persist(mountainHabitat);
+        // em.persist(tundraHabitat);
+        // em.persist(city);
+        // em.persist(park);
+        // em.persist(salmon);
+        // em.persist(bear);
+        // em.persist(human);
+        // em.persist(god);
 
-                refreshList(emf, listModel);
-            }
-        });
+        // em.getTransaction().commit();
 
-        updateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EntityManager em = emf.createEntityManager();
-                em.getTransaction().begin();
+        // em.close();
+        // emf.close();
 
-                Urso urso = list.getSelectedValue();
-                urso.setNome(textField.getText());
-                em.merge(urso);
-
-                em.getTransaction().commit();
-                em.close();
-
-                refreshList(emf, listModel);
-            }
-        });
-
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EntityManager em = emf.createEntityManager();
-                em.getTransaction().begin();
-
-                Urso urso = list.getSelectedValue();
-                urso = em.merge(urso);
-                em.remove(urso);
-
-                em.getTransaction().commit();
-                em.close();
-
-                refreshList(emf, listModel);
-            }
-        });
-
-        frame.setVisible(true);
-    }
-
-    private static void refreshList(EntityManagerFactory emf, DefaultListModel<Urso> listModel) {
-        EntityManager em = emf.createEntityManager();
-
-        List<Urso> ursos = em.createQuery("SELECT u FROM Urso u", Urso.class).getResultList();
-
-        em.close();
-
-        listModel.clear();
-        for (Urso urso : ursos) {
-            listModel.addElement(urso);
-        }
+        SalmonGUI salmonGUI = new SalmonGUI();
+        salmonGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        salmonGUI.setSize(650, 400);
+        salmonGUI.setVisible(true);
     }
 }
